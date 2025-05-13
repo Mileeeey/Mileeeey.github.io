@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>I'm sorry please, bati na po tayooo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+            background-color: #fff0f6;
+        }
+        .yes-button, .no-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <h1>I'm sorry please, bati na po tayooo</h1>
+    <div class="buttons">
+        <button class="yes-button" onclick="handleYesClick()">Sige na 😭</button>
+        <button class="no-button" onclick="handleNoClick()">Ayoko 😢</button>
+    </div>
+    <div class="gif_container">
+	<img src="https://media.tenor.com/15hJPj_kW3EAAAAC/littlebitofab-please.gif" alt="Cute GIF">
+    </div>
+    <script>
+    (async function checkForUpdates() {
+        const currentVersion = "1.0";
+        const versionUrl = "https://raw.githubusercontent.com/ivysone/Will-you-be-my-Valentine-/main/version.json"; 
+
+        try {
+            const response = await fetch(versionUrl);
+            if (!response.ok) {
+                console.warn("Could not fetch version information.");
+                return;
+            }
+            const data = await response.json();
+            const latestVersion = data.version;
+            const updateMessage = data.updateMessage;
+
+            if (currentVersion !== latestVersion) {
+                alert(updateMessage);
+            } else {
+                console.log("You are using the latest version.");
+            }
+        } catch (error) {
+            console.error("Error checking for updates:", error);
+        }
+    })();
+
+    const messages = [
+        "sure na po ba? 😭",
+        "like suree na sureee?? 😢",
+        "huhhuhu sure na sure na sure? 🥺",
+        "ethan naman eh 😭",
+        "BABYYYYYYYYYYYYYYYYY 🥹",
+        "naiiyak na ang tao oh HAHAHAHA",
+        "huhuhuhu :<<<<<<<<<<<<<<<<<<<<",
+        "like sure na ba tlgah? 🥲",
+        "Ok sige, i'll stop na kung ayaw mo talaga 😞",
+        "Jokes HAHAHAHAHAA, bati na pleaseee ❤️"
+    ];
+
+    let messageIndex = 0;
+
+    function handleNoClick() {
+        const noButton = document.querySelector('.no-button');
+        const yesButton = document.querySelector('.yes-button');
+        noButton.textContent = messages[messageIndex];
+        messageIndex = (messageIndex + 1) % messages.length;
+        const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+        yesButton.style.fontSize = `${currentSize * 1.5}px`;
+    }
+
+    function handleYesClick() {
+        // Redirects to the "Yes_page" page
+        window.location.href = "Yes_page.html";
+    }
+    </script>
+</body>
+</html>
